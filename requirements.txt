@@ -2,5 +2,9 @@ streamlit==1.32.0
 pandas==2.2.1
 openpyxl==3.1.2
 xlsxwriter==3.1.9
+<<<<<<< HEAD
 xlrd==2.0.1
+=======
+xlrd>=2.0.1 
+>>>>>>> fbefb86a0500c63f380f9e3c3e4031b2c5634eea
 python-dateutil>=2.8.2
