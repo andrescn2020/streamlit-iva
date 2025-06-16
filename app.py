@@ -53,13 +53,20 @@ if uploaded_file is not None and contribuyente:
         df["Nro Comprobante"] = df["Nro Comprobante"].astype(str)
         df["CUIT"] = df["CUIT"].astype(str)
         df["Importe"] = pd.to_numeric(df["Importe"], errors="coerce").round(2)
-        df["Fecha"] = pd.to_datetime(df["Fecha"]).dt.strftime("%d/%m/%Y")
 
-        # Ordenar por fecha de menor a mayor
-        df = df.sort_values("Fecha")
+        # Convertir fecha a datetime y luego a string con formato específico
+        df["Fecha"] = pd.to_datetime(df["Fecha"], dayfirst=True).dt.strftime("%d/%m/%Y")
+
+        # Ordenar por fecha de menor a mayor (convertir a datetime para ordenar correctamente)
+        df = df.sort_values(
+            by="Fecha",
+            key=lambda x: pd.to_datetime(x, format="%d/%m/%Y", dayfirst=True),
+        )
 
         # Obtener el mes y año de la primera fecha
-        primera_fecha = pd.to_datetime(df["Fecha"].iloc[0], format="%d/%m/%Y")
+        primera_fecha = pd.to_datetime(
+            df["Fecha"].iloc[0], format="%d/%m/%Y", dayfirst=True
+        )
         mes_anio = primera_fecha.strftime("%m-%Y")
 
         # Reordenar las columnas
