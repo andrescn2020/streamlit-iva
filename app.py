@@ -195,7 +195,7 @@ if uploaded_file is not None and contribuyente:
         st.download_button(
             label="📥 Descargar Excel",
             data=buffer.getvalue(),
-            file_name="datos_procesados.xlsx",
+            file_name="Deducciones.xlsx",
             mime="application/vnd.ms-excel",
         )
 
