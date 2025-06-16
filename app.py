@@ -4,15 +4,18 @@ import locale
 import io
 from datetime import datetime
 
-st.set_page_config(page_title="Lector de Excel", page_icon="📊")
+st.set_page_config(page_title="Deducciones IVA", page_icon="📊")
 
-st.title("📊 Lector de Archivos Excel")
+st.title("📊 Deducciones IVA")
 
 # Campo para el nombre del contribuyente
 contribuyente = st.text_input("Nombre del Contribuyente", key="contribuyente")
 
 # Widget para seleccionar archivo
-uploaded_file = st.file_uploader("Selecciona un archivo Excel", type=["xlsx", "xls"])
+uploaded_file = st.file_uploader(
+    "Selecciona el archivo Excel descargado desde mis retenciones en ARCA",
+    type=["xlsx", "xls"],
+)
 
 if uploaded_file is not None and contribuyente:
     try:
